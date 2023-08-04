@@ -72,7 +72,7 @@ function NekoSummon(mode){
           + '<div class="leg leg2"></div>'
         + '</div>'
       + '</div>'
-      '</div>';
+    + '</div>';
 
     neko_box.innerHTML += neko_html;
     neko_count++;
