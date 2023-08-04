@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title></title>
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="neko.css">
+  <link rel="stylesheet" href="keyframes.css">
+</head>
+
+
+<body>
+  <main>
+    <div id="neko_box"></div>
+
+    <div id="config_box">
+      <div id="summon_box">
+        <span>ﾈｺﾁｬﾝを</span>
+        <button onclick="NekoSummon(0)">減らす</button>
+        <button onclick="NekoSummon(1)">増やす</button>
+      </div>
+
+      <hr />
+
+      <div id="sel_box">
+        <span>選択中: </span>
+        <select id="select_neko" onchange="NekoSelect()">
+        </select>
+      </div>
+
+      <div id="range_boxs">
+        <div class="range_box">
+          <p>体</p>
+        </div>
+
+        <div class="range_box">
+          <p>目・口・番号</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+
+
+</html>
+

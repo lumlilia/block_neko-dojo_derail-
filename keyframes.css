@@ -1,0 +1,27 @@
+@keyframes eye{
+  0%, 24%, 30%, 96%, 100%{
+    transform: scaleY(1);
+  }
+  27%, 98%{
+    transform: scaleY(0);
+  }
+}
+
+@keyframes head{
+  0%, 80%{
+    transform: rotate(0);
+  }
+  90%, 100%{
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes arm{
+  0%{
+    transform: rotate(var(--rot));
+  }
+  100%{
+    transform: rotate(0);
+  }
+}
+
