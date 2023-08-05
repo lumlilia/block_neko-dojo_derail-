@@ -1,8 +1,10 @@
+document.addEventListener('dblclick', (e) => e.preventDefault(), {passive: false});
+
 const neko_box = document.getElementById('neko_box');
 const select_neko = document.getElementById('select_neko');
 const range_boxs = document.getElementsByClassName('range_box');
 
-let neko_count = 0;
+let neko_count = 3;
 let neko_sel = 1;
 
 let bg_cols = [
@@ -23,8 +25,10 @@ let fg_cols = [
   [0, 0, 0]
 ];
 
-for(let i = 0; i < 3; i++){
-  NekoSummon(2);
+NekoCreate();
+
+for(let i = 1; i <= 3; i++){
+  SelectNekoCreate(i);
 }
 
 for(let i = 0; i < 3; i++){
@@ -41,15 +45,13 @@ for(let i = 0; i < 3; i++){
   }
 }
 
+function NekoCreate(){
+  neko_box.innerHTML = '';
+  let neko_html = '';
 
-function NekoSummon(mode){
-  if(neko_count == 1 + (mode * 5) && mode != 2){
-    alert("ﾈｺﾁｬﾝの数は1〜6匹です")
-  }
-
-  else if(mode){
-    const neko_html =
-      '<div class="neko_chan" style="--bgcol: rgb(' + bg_cols[neko_count].toString() + '); --fgcol: rgb(' + fg_cols[neko_count].toString() + ');">'
+  for(let i = 0; i < 6; i++){
+    neko_html +=
+      '<div class="neko_chan" style="--bgcol: rgb(' + bg_cols[i].toString() + '); --fgcol: rgb(' + fg_cols[i].toString() + ');' + ((i > neko_count - 1) ? 'display:none;' : '') + '">'
       + '<div class="chara">'
         + '<div class="head_out">'
           + '<div class="ear ear1"></div>'
@@ -64,7 +66,7 @@ function NekoSummon(mode){
         + '</div>'
         + '<div class="body_out">'
           + '<div class="body_in">'
-            + '<div id="neko_num' + (neko_count + 1) + '" class="neko_num"></div>'
+            + '<div id="neko_num' + (i + 1) + '" class="neko_num"></div>'
           + '</div>'
           + '<div class="arm arm1"></div>'
           + '<div class="arm arm2"></div>'
@@ -73,16 +75,32 @@ function NekoSummon(mode){
         + '</div>'
       + '</div>'
     + '</div>';
+  }
 
-    neko_box.innerHTML += neko_html;
+  neko_box.innerHTML = neko_html;
+}
+
+
+function SelectNekoCreate(n){
+  select_neko.innerHTML += '<option value="' + n + '">ﾈｺﾁｬﾝ' + n + '号</option>';
+}
+
+
+function NekoSummon(mode){
+  if(neko_count == 1 + (mode * 5) && mode != 2){
+    alert("ﾈｺﾁｬﾝの数は1〜6匹です")
+  }
+
+  else if(mode){
+    document.getElementsByClassName('neko_chan')[neko_count].style.display = 'block';
     neko_count++;
-    select_neko.innerHTML += '<option value="' + neko_count + '">ﾈｺﾁｬﾝ' + neko_count + '号</option>';
+    SelectNekoCreate(neko_count);
   }
 
   else{
-    neko_box.innerHTML = neko_box.innerHTML.substr(0, neko_box.innerHTML.lastIndexOf('<div class="neko_chan"'));
-    select_neko.innerHTML = select_neko.innerHTML.substr(0, select_neko.innerHTML.lastIndexOf('<option'));
+    document.getElementsByClassName('neko_chan')[neko_count - 1].style.display = 'none';
     neko_count--;
+    select_neko.innerHTML = select_neko.innerHTML.substr(0, select_neko.innerHTML.lastIndexOf('<option'));
 
     if(neko_sel > neko_count){
       neko_sel = 1;
