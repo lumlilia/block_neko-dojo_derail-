@@ -6,6 +6,7 @@ html{
 
 body{
   -webkit-text-size-adjust: 100%;
+  font-family: sans-serif;
 }
 
 button{
@@ -16,7 +17,12 @@ button{
   padding: 0;
 }
 
+input[type=range]{
+  width: 50%;
+}
+
 input[type=number]{
+  width: 4em;
   height: fit-content;
 }
 
@@ -52,13 +58,15 @@ main{
 }
 
 #config_box{
+  position: relative;
   flex-direction: column;
 }
 
 #summon_box{
   display: flex;
-  width: 100%;
+  width: 98%;
   gap: 5px;
+  margin: auto;
 }
 
 #summon_box span{
@@ -76,6 +84,7 @@ main{
 .ranges{
   display: flex;
   width: fit-content;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -116,21 +125,30 @@ footer p{
 
 
 @media (orientation: landscape){
+  #neko_box,
+  #config_box{
+    width: 484px;
+  }
+
   #neko_box{
     flex-wrap: nowrap;
-    width: 484px;
     height: 150px;
   }
 
   #range_boxs{
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
 @media (orientation: portrait){
+  #neko_box,
+  #config_box{
+    width: 242px;
+  }
+
   #neko_box{
     flex-wrap: wrap;
-    width: 242px;
     height: 250px;
   }
 
