@@ -62,8 +62,14 @@ main{
   flex-direction: column;
 }
 
+#isseeno{
+  width: 10em;
+  margin: 10px auto 0 auto;
+}
+
 #summon_box{
   display: flex;
+  justify-content: center;
   width: 98%;
   gap: 5px;
   margin: auto;
@@ -71,10 +77,6 @@ main{
 
 #summon_box span{
   margin-right: 5px;
-}
-
-#summon_box button:last-child{
-  margin-left: auto;
 }
 
 #sel_box{
